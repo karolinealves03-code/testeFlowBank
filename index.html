@@ -31,7 +31,7 @@
             <a href="#">Esqueci senha</a>
         </div>
 
-        <button type="button" class="btn-principal" onclick="alert('Login em desenvolvimento!')">Login</button>
+        <button type="button" class="btn-principal" onclick="trocarTela('tela-dashboard')">Login</button>
 
         <div class="link-rodape">
             Não tem uma conta? <a href="javascript:void(0)" onclick="trocarTela('tela-cadastro')">Cadastre-se</a>
@@ -94,6 +94,160 @@
             const telaDestino = document.getElementById(idTelaQueQueroMostrar);
             if (telaDestino) {
                 telaDestino.classList.remove('escondido');
+            }
+        }
+    </script>
+    <div id="tela-dashboard" class="dashboard escondido">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo-sidebar">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>FlowBank</span>
+            </div>
+            
+            <nav class="menu">
+                <a href="#" class="menu-item ativo">
+                    <i class="fa-solid fa-house"></i> Início
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-money-bill-transfer"></i> Transferências
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-credit-card"></i> Cartões
+                </a>
+                <a href="#" class="menu-item">
+                    <i class="fa-solid fa-chart-line"></i> Investimentos
+                </a>
+            </nav>
+
+            <div class="usuario-sidebar">
+                <i class="fa-solid fa-circle-user"></i>
+                <div>
+                    <strong>Karoline Alves</strong>
+                    <small>Ag 0001 • CC 12345-6</small>
+                </div>
+            </div>
+            
+            <button class="btn-sair" onclick="trocarTela('tela-login')">
+                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            </button>
+        </aside>
+
+        <!-- Conteúdo Principal -->
+        <main class="conteudo">
+            <header class="header-dashboard">
+                <h2>Olá, Karoline 👋</h2>
+                <p>Seja bem-vinda de volta</p>
+            </header>
+
+            <!-- Card de Saldo -->
+            <section class="card-saldo">
+                <div class="saldo-info">
+                    <span>Saldo disponível</span>
+                    <div class="valor-saldo">
+                        <strong id="valor">R$ 5.847,32</strong>
+                        <button class="btn-ocultar" onclick="ocultarSaldo()">
+                            <i id="icone-olho" class="fa-solid fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="acoes-rapidas">
+                    <button class="btn-acao"><i class="fa-solid fa-arrow-up"></i> Transferir</button>
+                    <button class="btn-acao"><i class="fa-solid fa-barcode"></i> Pagar</button>
+                    <button class="btn-acao"><i class="fa-solid fa-pix"></i> Pix</button>
+                </div>
+            </section>
+
+            <!-- Extrato -->
+            <section class="extrato">
+                <div class="extrato-header">
+                    <h3>Últimos lançamentos</h3>
+                    <a href="#">Ver tudo</a>
+                </div>
+
+                <div class="lista-transacoes">
+                    <div class="transacao">
+                        <div class="icone-transacao entrada">
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </div>
+                        <div class="detalhes">
+                            <strong>Transferência recebida</strong>
+                            <span>João Silva • 12/05 às 14:32</span>
+                        </div>
+                        <div class="valor entrada">+ R$ 250,00</div>
+                    </div>
+
+                    <div class="transacao">
+                        <div class="icone-transacao saida">
+                            <i class="fa-solid fa-arrow-up"></i>
+                        </div>
+                        <div class="detalhes">
+                            <strong>Pix enviado</strong>
+                            <span>Padaria do Zé • 12/05 às 08:15</span>
+                        </div>
+                        <div class="valor saida">- R$ 23,50</div>
+                    </div>
+
+                    <div class="transacao">
+                        <div class="icone-transacao saida">
+                            <i class="fa-solid fa-credit-card"></i>
+                        </div>
+                        <div class="detalhes">
+                            <strong>Compra no cartão</strong>
+                            <span>Amazon • 11/05 às 19:40</span>
+                        </div>
+                        <div class="valor saida">- R$ 89,90</div>
+                    </div>
+
+                    <div class="transacao">
+                        <div class="icone-transacao entrada">
+                            <i class="fa-solid fa-building-columns"></i>
+                        </div>
+                        <div class="detalhes">
+                            <strong>Salário</strong>
+                            <span>Empresa XYZ • 10/05 às 09:00</span>
+                        </div>
+                        <div class="valor entrada">+ R$ 3.200,00</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function trocarTela(idTelaQueQueroMostrar) {
+            const todasAsTelas = document.querySelectorAll('.caixa-acesso, .dashboard');
+            todasAsTelas.forEach(function(tela) {
+                tela.classList.add('escondido');
+            });
+
+            const telaDestino = document.getElementById(idTelaQueQueroMostrar);
+            if (telaDestino) {
+                telaDestino.classList.remove('escondido');
+            }
+
+            // Ajusta o body pra tela de login vs dashboard
+            if (idTelaQueQueroMostrar === 'tela-dashboard') {
+                document.body.classList.add('body-dashboard');
+            } else {
+                document.body.classList.remove('body-dashboard');
+            }
+        }
+
+        let saldoVisivel = true;
+        
+        function ocultarSaldo() {
+            const valor = document.getElementById('valor');
+            const icone = document.getElementById('icone-olho');
+            
+            if (saldoVisivel) {
+                valor.textContent = 'R$ ••••••';
+                icone.className = 'fa-solid fa-eye-slash';
+                saldoVisivel = false;
+            } else {
+                valor.textContent = 'R$ 5.847,32';
+                icone.className = 'fa-solid fa-eye';
+                saldoVisivel = true;
             }
         }
     </script>
