@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowBank - Acesso e Cadastro</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div id="tela-login" class="caixa-acesso">
+        <h1>Login FlowBank</h1>
+
+        <div class="input-group">
+            <input type="text" placeholder="Usuário">
+            <i class="fa-solid fa-user icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="password" placeholder="Senha">
+            <i class="fa-solid fa-lock icone"></i>
+        </div>
+
+        <div class="opcoes-extras">
+            <label class="lembrar-senha">
+                <input type="checkbox"> Lembrar senha
+            </label>
+            <a href="#">Esqueci senha</a>
+        </div>
+
+        <button type="button" class="btn-principal" onclick="alert('Login em desenvolvimento!')">Login</button>
+
+        <div class="link-rodape">
+            Não tem uma conta? <a href="javascript:void(0)" onclick="trocarTela('tela-cadastro')">Cadastre-se</a>
+        </div>
+    </div>
+
+    <div id="tela-cadastro" class="caixa-acesso escondido">
+        <h1>Criar uma conta</h1>
+
+        <div class="input-group">
+            <input type="text" placeholder="Nome Completo">
+            <i class="fa-solid fa-id-badge icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="text" placeholder="CPF">
+            <i class="fa-solid fa-address-card icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="email" placeholder="E-mail">
+            <i class="fa-solid fa-envelope icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="password" placeholder="Senha">
+            <i class="fa-solid fa-lock icone"></i>
+        </div>
+
+        <div class="input-group">
+            <input type="password" placeholder="Confirmar senha">
+            <i class="fa-solid fa-check-circle icone"></i>
+        </div>
+
+        <button type="button" class="btn-principal" onclick="trocarTela('tela-sucesso')">Criar conta</button>
+
+        <div class="link-rodape">
+            Já tenho conta. <a href="javascript:void(0)" onclick="trocarTela('tela-login')">Fazer Login</a>
+        </div>
+    </div>
+
+    <div id="tela-sucesso" class="caixa-acesso escondido">
+        <i class="fa-solid fa-circle-check icone-sucesso"></i>
+        
+        <h1>Conta criada!</h1>
+        <p class="texto-sucesso">Sua conta foi criada com sucesso. Seja bem-vindo(a) ao BancoDev!</p>
+        
+        <button type="button" class="btn-principal" onclick="trocarTela('tela-login')">Ir para o Login</button>
+    </div>
+
+    <script>
+        function trocarTela(idTelaQueQueroMostrar) {
+            // Esconde todas as caixas de acesso
+            const todasAsTelas = document.querySelectorAll('.caixa-acesso');
+            todasAsTelas.forEach(function(tela) {
+                tela.classList.add('escondido');
+            });
+
+            // Mostra apenas a tela solicitada
+            const telaDestino = document.getElementById(idTelaQueQueroMostrar);
+            if (telaDestino) {
+                telaDestino.classList.remove('escondido');
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+/* =========================================
+   CSS: ESTILIZAÇÃO PARA DESKTOP
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #959fd8; /* Fundo Vermelho BancoDev */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* Caixa de vidro (Glassmorphism) */
+.caixa-acesso {
+    background: rgba(0, 0, 0, 0.05);
+    border: 1px solid #f3f4f7;
+    border-radius: 15px;
+    padding: 50px 40px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.caixa-acesso h1 {
+    font-size: 28px;
+    margin-bottom: 40px;
+    font-weight: 700;
+}
+
+/* Estilo dos campos de entrada */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 45px 15px 20px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 30px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: white;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.input-group .icone {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Links e Checkbox */
+.opcoes-extras {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
+.lembrar-senha {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botão Branco */
+.btn-principal {
+    width: 100%;
+    padding: 15px;
+    background-color: white;
+    color: #3220d8;
+    border: none;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+.btn-principal:hover {
+    background-color: #f0f0f0;
+}
+
+.link-rodape {
+    font-size: 14px;
+}
+
+/* Classe para esconder as telas */
+.escondido {
+    display: none !important;
+}
+
+/* Estilo da tela de sucesso */
+.icone-sucesso {
+    font-size: 70px;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.texto-sucesso {
+    font-size: 15px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
